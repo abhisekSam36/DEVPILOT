@@ -1,7 +1,5 @@
 package devPilot.backend.config;
 
-import lpombok.RequiredArgsConstructor;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -53,7 +51,7 @@ public class SecurityConfig {
                 .oauth2Login(oauth -> oauth
                         .userInfoEndpoint(userInfo -> userInfo
                                 .userService(gitHubOAuth2UserService))
-                        .successHandler(oauth2SuccessHandler)
+                        .successHandler(oauth2SuccessHandler) 
                         .failureHandler(oauth2FailureHandler))
                 .logout(logout -> logout
                         .logoutUrl("/api/auth/logout")
@@ -80,5 +78,5 @@ public class SecurityConfig {
         SimpleUrlAuthenticationFailureHandler handler = new SimpleUrlAuthenticationFailureHandler();
         handler.setDefaultFailureUrl(frontendUrl + "/login?error=oauth_failed");
         return handler;
-    }
+    }   
 }
